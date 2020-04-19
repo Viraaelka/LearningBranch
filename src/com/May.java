@@ -1,112 +1,258 @@
+package com;
 
-
-/*
-Рекурсивное создание нитей
-*/
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Stream.of;
-
-public class Solution {
+public class May {
     public static void main(String[] args) throws Exception {
-        int[] a = new int[]{121, 144, 19, 161, 19, 144, 19, 11};
-        int[] b = new int[]{14641, 20736, 361, 361, 25921, 361, 20736, 121};
-        /*
-           System.out.println("****** Basic Tests small numbers******");
-        List<Integer> ts = new ArrayList<>(Arrays.asList(50, 55, 56, 57, 58));
-        int n = SumOfK.chooseBestSum(163, 3, ts);
-        assertEquals(163, n);
-        ts = new ArrayList<>(Arrays.asList(50));
-        Integer m = SumOfK.chooseBestSum(163, 3, ts);
-        assertEquals(null, m);
-        ts = new ArrayList<>(Arrays.asList(91, 74, 73, 85, 73, 81, 87));
-        n = SumOfK.chooseBestSum(230, 3, ts);
-        assertEquals(228, n);
-         */
-//        System.out.println(chooseBestSum(1680, 1, new ArrayList<>(Arrays.asList(92, 127, 335, 251, 499, 138, 200, 48, 436, 379, 456, 154, 380, 378, 182, 324, 477, 415, 50, 288))));
-//        System.out.println(chooseBestSum(1599, 4, new ArrayList<>(Arrays.asList(374, 132, 378, 436, 380, 178, 205, 484, 477, 159, 351, 124, 321, 34, 319, 169, 375, 90, 375, 290))));
-//        System.out.println("final = " + chooseBestSum(331, 2, new ArrayList<>(Arrays.asList(91, 74, 73, 85, 73, 81, 87))));
-//        System.out.println(getNegativeMod(-15, 7));
-//        System.out.println(decompose("3", "4"));
-
-        System.out.println("final = " + decompose("14", "15"));
-//        System.out.println(getAdditionalSecond(16, 38098944));
-//        System.out.println(getRoundedValueToUpperValue(351, 59796412));
-//        System.out.println(getSecondPartOfFormula(13, 351708));
+        long number = 1234678;
+        System.out.println(formatDuration(3660));
     }
 
+//    public static String formatDuration(int seconds) throws Exception {
+//        StringBuilder dateString = new StringBuilder();
+//        if (seconds > 0) {
+//            int[] k = null;
+//            if (seconds >= 60 && seconds < 3600)
+//                k = minutesCalculation(seconds);
+//            else if (seconds >= 3600 && seconds < 86400)
+//                k = hoursCalculation(seconds);
+//            try {
+//                switch (k.length) {
+//                    case 2:
+//                        if (k[0] != 0)
+//                            dateString.append(k[0]).append(" ").append(getMultipleTime(k[0], "minute"));
+//                        if (k[1] != 0)
+//                            dateString.append(" and ").append(k[1]).append(" ").append(getMultipleTime(k[1], "second"));
+//                        break;
+//                    case 3:
+//                        if (k[0] != 0)
+//                            dateString.append(k[0]).append(" ").append(getMultipleTime(k[0], "hour"));
+//                        if (k[1] != 0)
+//                            dateString.append(", ").append(k[1]).append(" ").append(getMultipleTime(k[1], "minute"));
+//                        if (k[2] != 0)
+//                            dateString.append(" and ").append(k[2]).append(" ").append(getMultipleTime(k[2], "second"));
+//                        break;
+//                }
+//            } catch (NullPointerException e) {
+//                if (seconds == 0)
+//                    return "now";
+//                dateString.append(seconds).append(" ").append(getMultipleTime(seconds, "second"));
+//            }
+//        }
+//        return dateString.toString();
+//    }
+//
+//    private static String getMultipleTime(int minute, String time) {
+//        return (minute == 1) ? time : time + "s";
+//    }
+//
+//    private static int[] minutesCalculation(int seconds) {
+//        return new int[]{seconds / 60, seconds - (seconds / 60) * 60};
+//    }
+//
+//    private static int[] hoursCalculation(int seconds) {
+//        int hours = seconds / 3600;
+//        int[] minAndSec = minutesCalculation(seconds - hours * 3600);
+//        return new int[]{hours, minAndSec[0], minAndSec[1]};
+//    }
+//    private static int[] daysCalculation(int seconds){
+//        int days = seconds / ;
+//    }
+//    private static int[] yearCalculation(int seconds){
+//        int year = seconds /
+//    }
+// ==================================================================================================================
+
+//    class ConsonantValue {
+//        static int solve(String s) {
+//            return of(s.split("[aeiou]")).mapToInt(con -> con.chars().map(c -> c - 96).sum()).max().orElse(0);
+//        }
+//
+//        public class ConsonantValue {
+//            public static int solve(final String s) {
+//                return Arrays.stream(s.split("[aeiou]+"))
+//                        .mapToInt(t -> t.chars().sum() - t.length() * 96)
+//                        .max()
+//                        .getAsInt();
+//            }
+//        }
+//
+//        public static int solve(final String s) {
+//            String s2 = "aeiou";
+//            int sum = 0, x = 0;
+//            for (int i = 0; i < s.length(); i++) {
+//                if (s2.contains("" + s.charAt(i))) {
+//                    sum = Math.max(sum, x);
+//                    x = 0;
+//                } else {
+//                    x += (int) s.charAt(i) - 96;
+//                }
+//            }
+//            sum = Math.max(sum, x);
+//            return sum;
+//        }
+
+    public static int solve(final String s) {
+        String alPart = " ";
+        String newS = s.split(alPart)[0];
+        int max = 0;
+        int currentValue = 0;
+        do {
+            alPart = getAlphaPart(newS, s).split(" - ")[0].trim();
+            max = currentValue;
+            currentValue = getValue(alPart);
+            currentValue = Math.max(max, currentValue);
+            if (alPart.length() == newS.length())
+                break;
+            newS = newS.substring(alPart.length() + 1);
+        } while (newS.length() != 0);
+        return currentValue;
+    }
+
+    private static String getAlphaPart(String newS, String s) {
+        int count = 0;
+        String alPart = "";
+        Character[] alphabet = {'j', 'x', 'w', 'y', 'b', 'c', 'd', 'f', 'g', 'h', 'q', 'p', 'r', 's', 't', 'v', 'w', 'k', 'l', 'm', 'n', 'z'};
+        for (Character letter : newS.toCharArray()) {
+            for (Character al : alphabet) {
+                if (letter.equals(al)) {
+                    alPart += letter;
+                    break;
+                } else
+                    count++;
+            }
+            if (count == alphabet.length)
+                break;
+            count = 0;
+        }
+        return alPart;
+    }
+
+    private static int getValue(String alPart) {
+        int currentValue = 0;
+        String alphabetLine = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
+        for (Character ch : alPart.toCharArray()) {
+            currentValue += alphabetLine.indexOf(ch.toString()) + 1;
+        }
+        return currentValue;
+    }
+// ==================================================================================================================
+
+    public static int[] digitize(long n) {
+        String nValue = String.valueOf(n);
+        int size = nValue.length();
+        int[] temp = new int[size];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = Integer.parseInt(nValue.substring(size - i - 1, size - i));
+        }
+        return temp;
+    }
+
+    public static int[] digitize2(long n) {
+        String nValue = String.valueOf(n);
+        int size = nValue.length();
+        int[] temp = new int[size];
+        for (int i = 0; i < size; i++) {
+            temp[i] = nValue.charAt(size - i - 1) - 48;
+        }
+        for (int o : temp) {
+            System.out.println(o);
+        }
+        return temp;
+    }
+
+    public static String balancedNumber(long n) {
+        String nValue = String.valueOf(n);
+        int size = nValue.length();
+        int halfSize = nValue.length() / 2;
+        int resultRight = 0, resultLeft = 0;
+        if (nValue.length() <= 2)
+            return "Balanced";
+        else {
+            if (nValue.length() % 2 == 0) {
+                for (int i = 0; i < halfSize - 1; i++) {
+                    resultRight += nValue.charAt(i) - 48;
+                }
+                System.out.println("resultRight = " + resultRight);
+            } else {
+                for (int i = 0; i < halfSize; i++) {
+                    resultRight += nValue.charAt(i) - 48;
+                }
+                System.out.println("resultRight = " + resultRight);
+            }
+            for (int i = halfSize + 1; i < size; i++) {
+                resultLeft += nValue.charAt(i) - 48;
+            }
+            System.out.println("resultLeft = " + resultLeft);
+            if (resultLeft == resultRight)
+                return "Balanced";
+            else return "Not balanced";
+        }
+    }
+
+    public static int[] digitize3(long n) {
+        return new StringBuilder().append(n)
+                .reverse()
+                .chars()
+                .map(Character::getNumericValue)
+                .toArray();
+    }
+
+    //    public static int[] digitize4(long n) {
+//        Stack<Integer> digits = new Stack<>();
+//        while (n > 0) {
+//            digits.push((int) (n % 10));
+//            n /= 10;
+//        }
+//
+//        return digits.stream().mapToInt(Integer::intValue).toArray();
+//    }
+
+    public static int[] digitize5(long n) {
+        int[] out = new int[(int) Math.log10(n) + 1];
+        int index = 0;
+        while (n != 0) {
+            out[index] = (int) (n % 10);
+            n /= 10;
+            index++;
+        }
+        return out;
+    }
     public static String decompose(String nrStr, String drStr) {
         stringBuilder.setLength(0);
-        System.out.println("n = " + nrStr + " : d = " + drStr);
+        System.out.println("n= " + nrStr + " : d = " + drStr);
         int nr = Integer.parseInt(nrStr);
         int dr = Integer.parseInt(drStr);
         if (nr / dr > 0 && nr % dr == 0)
             return stringBuilder.append("[").append(nr / dr).append("]").toString();
-        else if (nr != 0 && dr / nr > 0 && dr % nr == 0)
-            return stringBuilder.append("[").append("1/").append(dr / nr).append("]").toString();
         return nr == 0 || dr == 0 ? "[]" :
                 new StringBuilder().append("[").append(deco(nr, dr).replaceAll(", (?!\\d+)", "")).append("]").toString();
     }
 
     public static String getFirstPart(int nr, int dr) {
-        int k;
-        return (k = Integer.parseInt(getRoundedValueToUpperValue(nr, dr))) <= maxInt && k > 0 ?
-                new StringBuilder().append("1").append(k == 1 ? "" : "/" + k).append(", ").toString() : "";
+        return new StringBuilder().append("1/").append(getRoundedValueToUpperValue(nr, dr)).append(", ").toString();
     }
 
     public static String getSecondPartOfFormula(int a, int b) {
-        if (a >= Integer.MAX_VALUE || b > Integer.MAX_VALUE || getAdditionalSecond(a, b).equals(""))
-            return "";
-        return String.valueOf(getNegativeMod(a, b)) + " - " + getAdditionalSecond(a, b);
-    }
-
-    public static String getAdditionalSecond(int a, int b) {
-        int k;
-        long p;
-        try {
-            p = Long.parseLong(getRoundedValueToUpperValue(a, b)) * b;
-            if (p / getNegativeMod(a, b) < maxInt && p % getNegativeMod(a, b) == 0)
-                return p + "";
-        } catch (NumberFormatException e) {
-
-        }
-        return (k = Integer.parseInt(getRoundedValueToUpperValue(a, b)) * b) <= maxInt && k > 0 ? k + "" : "";
+        return String.valueOf(getNegativeMod(a, -b)) + " - " + String.valueOf(b * getRoundedValueToUpperValue(a, b));
     }
 
     public static StringBuilder stringBuilder = new StringBuilder();
-    public static final int maxInt = Integer.MAX_VALUE;
 
     public static String deco(int nr, int dr) {
         String divideNumberString = "";
-        if (!getFirstPart(nr, dr).equals(""))
-            stringBuilder.append(getFirstPart(nr, dr));
-        else
-            return stringBuilder.toString();
-        String kep = "";
-        if ((kep = getSecondPartOfFormula(nr, dr)).equals(""))
-            return stringBuilder.toString();
-        int nr2 = 0;
-        int dr2 = 0;
+        stringBuilder.append(getFirstPart(nr, dr));
+        String kep = getSecondPartOfFormula(nr, dr);
         if (!kep.equals("")) {
-            try {
-                nr2 = Integer.parseInt(kep.split(" - ")[0]);
-                dr2 = Integer.parseInt(kep.split(" - ")[1]);
-            } catch (NumberFormatException e) {
-                long h = Long.parseLong(kep.split(" - ")[1]);
-                return stringBuilder.append(1).append("/").append(h / nr2).append(", ").toString();
-            }
+            int nr2 = Integer.parseInt(kep.split(" - ")[0]);
+            int dr2 = Integer.parseInt(kep.split(" - ")[1]);
             divideNumberString = divideNumber(nr2, dr2);
             if (!divideNumberString.equals("")) {
+                System.out.println(divideNumberString);
                 nr2 = Integer.parseInt(divideNumberString.split(" - ")[0]);
                 dr2 = Integer.parseInt(divideNumberString.split(" - ")[1]);
             }
@@ -122,8 +268,6 @@ public class Solution {
     public static String divideNumber(int nr, int dr) {
         int c = 2;
         int a = 0, b = 0;
-        if (dr % nr == 0)
-            return "1 - " + dr / nr;
         while (c < 10) {
             if (nr % c == 0 && dr % c == 0)
                 return String.valueOf(nr / c) + " - " + String.valueOf(dr / c);
@@ -132,171 +276,24 @@ public class Solution {
         return "";
     }
 
-    public static String getRoundedValueToUpperValue(int nr, int dr) {
-        int k;
-        return (k = (int) Math.ceil((1.0 * dr) / nr)) <= maxInt && k > 0 ? String.valueOf(k) : "";
+    public static int getRoundedValueToUpperValue(int nr, int dr) {
+        return (int) Math.ceil((1.0 * dr) / nr);
     }
 
     public static int getNegativeMod(int b, int a) {
         int c = 1;
-        int temp = 0;
-        if (b >= maxInt)
-            return 0;
         while (true) {
-            temp = Math.abs(b) * c;
-            if (temp > maxInt)
-                return 0;
-            if (temp > Math.abs(a)) {
-                c = Math.abs((b * c) - a);
+            if (Math.abs(b) * c >= Math.abs(a)) {
+                if (b > 0)
+                    c = (b * c) + a;
+                else
+                    c = Math.abs((b * c) - a);
                 break;
             }
             c++;
         }
         return c;
     }
-
-
-    //======================================================
-
-    /**
-     * Wrapper function that converts String to BigDecimal and wrap answer in []
-     */
-    public static String decomposeBest1(String nrStr, String drStr) {
-        // Convert to Big Decimal values (Note: even long would overflow very fast)
-        BigDecimal numerator = new BigDecimal(nrStr);
-        BigDecimal denominator = new BigDecimal(drStr);
-
-        List<BigDecimal[]> decompose = decompose(numerator, denominator);
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-
-        sb.append(decompose.stream().map(entry -> {
-            if (entry.length == 1) {
-                return entry[0].equals(BigDecimal.ZERO) ? "" : entry[0].toString();
-            } else {
-                return entry[1].equals(BigDecimal.ONE) ? entry[0].toString() : String.format("%s/%s", entry[0].toString(), entry[1].toString());
-            }
-        }).collect(Collectors.joining(", ")));
-
-        sb.append("]");
-        return sb.toString();
-    }
-
-    public static List<BigDecimal[]> decompose(BigDecimal numerator, BigDecimal denominator) {
-        if (numerator.remainder(denominator).equals(BigDecimal.ZERO)) {
-            // if denominator perfectly divides numerator (say 8/2) add 4 in List
-            BigDecimal[] bigDecimals = new BigDecimal[]{numerator.divide(denominator, RoundingMode.DOWN)};
-
-            return new ArrayList<>(Collections.singleton(bigDecimals));
-        } else if (denominator.remainder(numerator).equals(BigDecimal.ZERO)) {
-            // if denominator perfectly divides numerator (say 2/8) add 1/4 in List
-            BigDecimal[] bigDecimals = {BigDecimal.ONE, denominator.divide(numerator, RoundingMode.DOWN)};
-
-            return new ArrayList<>(Collections.singleton(bigDecimals));
-        } else {
-            // if numerator doesn't divide denominator perfectly
-            // denominator/numerator + 1
-            BigDecimal n = denominator.divide(numerator, RoundingMode.DOWN).add(BigDecimal.ONE);
-
-            BigDecimal newNumerator = numerator.multiply(n).subtract(denominator);
-            BigDecimal newDenominator = denominator.multiply(n);
-
-            List<BigDecimal[]> list = new ArrayList<>();
-            list.add(new BigDecimal[]{BigDecimal.ONE, n});
-
-            list.addAll(decompose(newNumerator, newDenominator));
-
-            return list;
-        }
-    }
-
-    //======================================================
-    public static String decomposeBest2(String nrStr, String drStr) {
-        long a = Integer.parseInt(nrStr);
-        long b = Integer.parseInt(drStr);
-        long denum = 2;
-        String s;
-        if (a > b) {
-            s = ", " + a / b;
-            a %= b;
-        } else s = "";
-        while (a > 0) {
-            if (a * denum >= b) {
-                s += ", 1/" + denum;
-                a = a * denum - b;
-                b *= denum;
-            }
-            denum++;
-        }
-        return s.isEmpty() ? "[]" : "[" + s.substring(2) + "]";
-    }
-
-    //======================================================
-
-
-    public static final BigInteger ZERO = BigInteger.ZERO;
-    public static final BigInteger ONE = BigInteger.ONE;
-    public static final BigInteger TWO = BigInteger.valueOf(2L);
-
-    public static String decomposeBest3(String nrStr, String drStr) {
-        BigInteger numer = BigInteger.valueOf(Long.parseLong(nrStr));
-        BigInteger denom = BigInteger.valueOf(Long.parseLong(drStr));
-
-        List<String> fractions = new LinkedList<>();
-        if (numer.compareTo(denom) >= 0) {
-            fractions.add(numer.divide(denom).toString());
-            numer = numer.mod(denom);
-        }
-        while (numer.compareTo(ZERO) > 0) {
-            BigInteger next = denom.divide(numer);
-            if (denom.mod(numer).compareTo(ZERO) != 0)
-                next = next.add(ONE);
-            fractions.add("1/" + next.toString());
-            numer = numer.multiply(next).subtract(denom);
-            denom = denom.multiply(next);
-        }
-        return fractions.toString();
-    }
-
-    // ======== just to read how it can be written in terms of beautiful skill of programming ===================
-    class Decomp {
-
-        public String decomposeBest4(String nrStr, String drStr) {
-            Decomp solution = new Decomp(nrStr, drStr);
-            solution.addCoefficientToListAndGetReducedNumerator();
-            solution.addFractionPartsToList();
-            return solution.answers.toString();
-        }
-
-        List<String> answers;
-        long numerator;
-        long denominator;
-
-        Decomp(String nrStr, String drStr) {
-            this.numerator = Long.parseLong(nrStr);
-            this.denominator = Long.parseLong(drStr);
-            this.answers = new ArrayList<String>();
-        }
-
-        void addCoefficientToListAndGetReducedNumerator() {
-            long quotient = numerator / denominator;
-            if (quotient > 0) {
-                answers.add(String.valueOf(quotient));
-            }
-            numerator -= denominator * quotient;
-        }
-
-        void addFractionPartsToList() {
-            while (numerator > 0) {
-                long denominatorOfPartFraction = (int) Math.ceil(((double) denominator) / numerator);
-                answers.add("1/" + denominatorOfPartFraction);
-                numerator = (numerator * denominatorOfPartFraction) - denominator;
-                denominator *= denominatorOfPartFraction;
-            }
-        }
-    }
-
     //======================================================
 
     public static int digital_root(int n) {
@@ -778,3 +775,4 @@ public class Solution {
 //        return sum;
 //    }
 }
+
