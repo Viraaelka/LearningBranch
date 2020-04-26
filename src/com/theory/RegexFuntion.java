@@ -1,4 +1,4 @@
-package com.kata;
+package com.theory;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
