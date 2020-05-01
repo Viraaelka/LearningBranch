@@ -17,7 +17,6 @@ public class LastFirstName {
 // ====================================== MY SOLUTION=================================================
 
     public static String abbrevName(String name) {
-        System.out.println("name = " + name);
         String output = Arrays.stream(name.split(" ")).map(k -> k.charAt(0) + ".").map(String::toUpperCase).collect(Collectors.joining());
         return output.substring(0, output.length() - 1);
     }
