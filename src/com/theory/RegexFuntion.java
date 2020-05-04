@@ -15,4 +15,14 @@ public class RegexFuntion {
         }
         return outputString;
     }
+
+    public static String abbrevNameBest(String name) {
+        return name.toUpperCase().replaceAll("(.).*\\s(.).*", "$1.$2");
+    }
+
+    public static void regexExample() {
+        String abc = "abc";
+        String str = "zzzaaacccbbbzzz";
+        System.out.println(Pattern.compile("your regex function").matcher(str).find()); // -> true
+    }
 }
