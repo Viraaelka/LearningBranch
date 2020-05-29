@@ -20,6 +20,12 @@ public class RegexFuntion {
         return name.toUpperCase().replaceAll("(.).*\\s(.).*", "$1.$2");
     }
 
+    // See "SquareArrays"
+    public static String autoMorphicB(int number) {
+        String sq = number * number + "";
+        return sq.matches(".*" + number) ? "Automorphic" : "Not!!";
+    }
+
     public static void regexExample() {
         String abc = "abc";
         String str = "zzzaaacccbbbzzz";

@@ -2,6 +2,7 @@ package com.theory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Theory {
     /**
@@ -69,4 +70,12 @@ public class Theory {
     left = WHAT
     right = fffff
      */
+
+    public static int add(int x, int y) {
+        // I saw a similar solution and it blew my mind. This actually works‽
+        // OR  x \u002b y;
+        // OR  -  add((x^y),(x&y)<<1);
+        // OR \u0078\u002b\u0079;
+        return new AtomicInteger(x).addAndGet(y);
+    }
 }
